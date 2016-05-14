@@ -1,0 +1,37 @@
+{
+   "abstract" : "A modernish default lightweight logger",
+   "author" : [
+      "Kent Fredric C<kentnl@cpan.org>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "App::ModuleBuildTiny version 0.011",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Log-Contextual-WarnLogger-Fancy",
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "Module::Build::Tiny" : "0.034"
+         }
+      },
+      "develop" : {
+         "requires" : {
+            "App::ModuleBuildTiny" : "0.011"
+         }
+      }
+   },
+   "provides" : {
+      "Log::Contextual::WarnLogger::Fancy" : {
+         "file" : "lib/Log/Contextual/WarnLogger/Fancy.pm",
+         "version" : "0.001000"
+      }
+   },
+   "release_status" : "stable",
+   "version" : "0.001000",
+   "x_serialization_backend" : "JSON::PP version 2.27300"
+}

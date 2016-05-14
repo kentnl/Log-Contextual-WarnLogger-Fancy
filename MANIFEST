@@ -1,0 +1,14 @@
+Build.PL
+MANIFEST
+META.json
+META.yml
+lib/Log/Contextual/WarnLogger/Fancy.pm
+t/basic.t
+t/basic_group.t
+t/default_upto.t
+t/internals/noname.t
+t/internals/subname.t
+t/internals/subutil.t
+t/label_elision.t
+t/lib/KENTNL/WLTest.pm
+t/unsupported/custom_levels.t

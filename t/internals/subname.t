@@ -1,0 +1,26 @@
+use strict;
+use warnings;
+
+use Test::More;
+
+BEGIN {
+    if ( $INC{'Sub/Util.pm'} ) {
+        plan skip_all => "Sub::Util needes not to be preloaded for this test";
+        exit 0;
+    }
+    unless ( $INC{'Sub/Name.pm'} or eval { require Sub::Name; 1 } ) {
+        plan skip_all => "Sub::Name needed for this test";
+        exit 0;
+    }
+    unless ( $INC{'Sub/Identify.pm'} or eval { require Sub::Identify; 1 } ) {
+        plan skip_all => "Sub::Identify needed for this test";
+        exit 0;
+    }
+}
+
+require Log::Contextual::WarnLogger::Fancy;
+ok( Sub::Identify::sub_name( \&Log::Contextual::WarnLogger::Fancy::is_info ),
+    'is_info' );
+
+done_testing;
+
