@@ -2,6 +2,7 @@ Build.PL
 MANIFEST
 META.json
 META.yml
+cpanfile
 lib/Log/Contextual/WarnLogger/Fancy.pm
 t/basic.t
 t/basic_group.t
