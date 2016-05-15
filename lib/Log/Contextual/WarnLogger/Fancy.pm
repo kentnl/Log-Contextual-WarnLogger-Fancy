@@ -42,7 +42,9 @@ _gen_level($_) for (qw( trace debug info warn error fatal ));
 # $logger->{level_labels}->{ 'custom' } = 'custo';
 
 sub new {
-    my ( $class, $args ) = @_;
+    my ( $class, @args ) = @_;
+
+    my $args = ( @args == 1 && ref $args[0] ? { %{ $args[0] } } : { @args } );
 
     my $self = bless {}, $class;
 
