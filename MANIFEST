@@ -4,10 +4,14 @@ MANIFEST
 META.json
 META.yml
 cpanfile
+examples/clan/lib/My/Project.pm
+examples/clan/lib/My/Project/Library.pm
+examples/clan/lib/My/Project/Logger.pm
 lib/Log/Contextual/WarnLogger/Fancy.pm
 t/basic.t
 t/basic_group.t
 t/default_upto.t
+t/examples/clan.t
 t/internals/noname.t
 t/internals/subname.t
 t/internals/subutil.t
