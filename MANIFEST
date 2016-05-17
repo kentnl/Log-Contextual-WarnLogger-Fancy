@@ -1,6 +1,7 @@
 Build.PL
 Changes
 MANIFEST
+MANIFEST.SKIP
 META.json
 META.yml
 cpanfile
