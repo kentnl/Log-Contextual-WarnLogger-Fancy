@@ -1,3 +1,7 @@
+0.001001 2016-05-17
+- Increase runtime dependency on Term::ANSIColor for older cpan
+  clients who get test+runtime missmatch cases wrong.
+
 0.001000 2016-05-15
 - Initial Release.
 - QA Tests and travis integration still missing, mostly

@@ -1,6 +1,11 @@
 # vim: syntax=perl
 
-requires 'Term::ANSIColor';
+# Note: Test requires have to propagate
+#        to runtime requires when the module name matches
+#        otherwise bad CPAN Clients merge the data wrong
+#        and assume runtime requirement is the same
+#        as the test one :/
+requires 'Term::ANSIColor' => '2.01'; # colorstrip
 requires perl => '5.006';
 suggests 'Sub::Util';
 
