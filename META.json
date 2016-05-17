@@ -52,6 +52,16 @@
       }
    },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/kentnl/Log-Contextual-WarnLogger-Fancy/issues"
+      },
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/kentnl/Log-Contextual-WarnLogger-Fancy",
+         "web" : "https://github.com/kentnl/Log-Contextual-WarnLogger-Fancy"
+      }
+   },
    "version" : "0.001002",
    "x_serialization_backend" : "JSON::PP version 2.27300"
 }

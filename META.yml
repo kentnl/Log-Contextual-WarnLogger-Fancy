@@ -23,5 +23,8 @@ provides:
 requires:
   Term::ANSIColor: '2.01'
   perl: '5.006'
+resources:
+  bugtracker: https://github.com/kentnl/Log-Contextual-WarnLogger-Fancy/issues
+  repository: https://github.com/kentnl/Log-Contextual-WarnLogger-Fancy
 version: '0.001002'
 x_serialization_backend: 'CPAN::Meta::YAML version 0.018'
