@@ -4,7 +4,7 @@ use warnings;
 
 package Log::Contextual::WarnLogger::Fancy;
 
-our $VERSION = '0.001001';
+our $VERSION = '0.001002';
 
 use Carp qw( croak );
 use Term::ANSIColor qw( colored );

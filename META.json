@@ -48,10 +48,10 @@
    "provides" : {
       "Log::Contextual::WarnLogger::Fancy" : {
          "file" : "lib/Log/Contextual/WarnLogger/Fancy.pm",
-         "version" : "0.001001"
+         "version" : "0.001002"
       }
    },
    "release_status" : "stable",
-   "version" : "0.001001",
+   "version" : "0.001002",
    "x_serialization_backend" : "JSON::PP version 2.27300"
 }
