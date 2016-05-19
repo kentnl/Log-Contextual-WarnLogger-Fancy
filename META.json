@@ -49,7 +49,7 @@
    "provides" : {
       "Log::Contextual::WarnLogger::Fancy" : {
          "file" : "lib/Log/Contextual/WarnLogger/Fancy.pm",
-         "version" : "0.001003"
+         "version" : "0.001004"
       }
    },
    "release_status" : "stable",
@@ -63,6 +63,6 @@
          "web" : "https://github.com/kentnl/Log-Contextual-WarnLogger-Fancy"
       }
    },
-   "version" : "0.001003",
+   "version" : "0.001004",
    "x_serialization_backend" : "JSON::PP version 2.27300"
 }
