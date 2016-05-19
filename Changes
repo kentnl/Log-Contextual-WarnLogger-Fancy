@@ -1,4 +1,5 @@
 0.001003
+- Update test logic to employ Test::Needs
 
 0.001002 2016-05-19
 - Update Git and Bug metadata
