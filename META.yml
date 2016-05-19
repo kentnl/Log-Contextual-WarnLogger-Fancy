@@ -19,12 +19,12 @@ name: Log-Contextual-WarnLogger-Fancy
 provides:
   Log::Contextual::WarnLogger::Fancy:
     file: lib/Log/Contextual/WarnLogger/Fancy.pm
-    version: '0.001002'
+    version: '0.001003'
 requires:
   Term::ANSIColor: '2.01'
   perl: '5.006'
 resources:
   bugtracker: https://github.com/kentnl/Log-Contextual-WarnLogger-Fancy/issues
   repository: https://github.com/kentnl/Log-Contextual-WarnLogger-Fancy
-version: '0.001002'
+version: '0.001003'
 x_serialization_backend: 'CPAN::Meta::YAML version 0.018'
