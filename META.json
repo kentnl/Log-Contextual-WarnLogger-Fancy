@@ -4,7 +4,7 @@
       "Kent Fredric C<kentnl@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "App::ModuleBuildTiny version 0.011",
+   "generated_by" : "App::ModuleBuildTiny version 0.013",
    "license" : [
       "perl_5"
    ],
@@ -21,7 +21,7 @@
       },
       "develop" : {
          "requires" : {
-            "App::ModuleBuildTiny" : "0.011"
+            "App::ModuleBuildTiny" : "0.013"
          }
       },
       "runtime" : {
@@ -64,5 +64,5 @@
       }
    },
    "version" : "0.001004",
-   "x_serialization_backend" : "JSON::PP version 2.27300"
+   "x_serialization_backend" : "JSON::PP version 2.27400"
 }
