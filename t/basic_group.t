@@ -21,7 +21,7 @@ eq_or_diff(
     colorstrip(
         $t_env->with_warner(
             env_prefix       => $ENV_PREFIX,
-            group_env_prefix => $GRP_PREFIX
+            group_env_prefix => [ $GRP_PREFIX, 'T' ],
           )->run(
             sub {
                 log_info { 'info message' };

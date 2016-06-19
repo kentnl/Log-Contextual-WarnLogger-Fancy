@@ -1,4 +1,5 @@
-0.001004
+0.002000
+- Add support for ordered lists of group prefixes.
 
 0.001003 2016-05-19
 - Update test logic to employ Test::Needs

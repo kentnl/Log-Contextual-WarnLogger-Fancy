@@ -4,7 +4,7 @@ use warnings;
 
 package Log::Contextual::WarnLogger::Fancy;
 
-our $VERSION = '0.001004';
+our $VERSION = '0.002000';
 
 use Carp qw( croak );
 use Term::ANSIColor qw( colored );
@@ -136,40 +136,55 @@ sub _gen_level_sub {
 sub _gen_is_level_sub {
     my ($level) = @_;
     my $ulevel = '_' . uc $level;
+
     return sub {
         my $self = shift;
 
-        my ( $ep, $gp ) = @{$self}{qw( env_prefix group_env_prefix )};
+        # All ENV vars are just treated as an ordered list.
+        #
+        # "env_prefix" comes first, then group_env_prefix comes second as a
+        # fallback.
+        # group_env_prefix can be an arrayref itself ordered by
+        # narrowest-to-broadest.
 
-        my ( $ep_level, $ep_upto ) = ( $ep . $ulevel, $ep . '_UPTO' );
+        my (@prefixes) = ( $self->{env_prefix} );
+        if ( defined $self->{group_env_prefix} ) {
+            if ( ref $self->{group_env_prefix} ) {
+                push @prefixes, @{ $self->{group_env_prefix} };
+            }
+            else {
+                push @prefixes, $self->{group_env_prefix};
+            }
+        }
 
-        my ( $gp_level, $gp_upto ) = ( $gp . $ulevel, $gp . '_UPTO' )
-          if defined $gp;
+        # If Any of ${PREFIX}_${LEVEL} is explicitly defined in ENV, it takes
+        # precendence over anythingthing else, returning true/false based on
+        # whether or not those values are true or false
 
-        # Explicit true/false takes precedence
-        return !!$ENV{$ep_level} if defined $ENV{$ep_level};
+        for my $env_var ( map { $_ . $ulevel } @prefixes ) {
+            return !!$ENV{$env_var} if defined $ENV{$env_var};
+        }
 
-        # Explicit true/false takes precedence
-        return !!$ENV{$gp_level} if $gp_level and defined $ENV{$gp_level};
+        # If Any of ${PREFIX}_UPTO is explicitly defined in ENV,
+        # it falls back from ${PREFIX_LEVEL} but again, the "narrowest"
+        # scope wins.
 
         my $upto;
+        for my $env_var ( map { $_ . '_UPTO' } @prefixes ) {
+            if ( defined $ENV{$env_var} ) {
+                $upto = lc $ENV{$env_var};
+                croak "Unrecognized log level '$upto' in \$ENV{$env_var}"
+                  if not defined $self->{level_nums}->{$upto};
+                last;
+            }
+        }
 
-        if ( defined $ENV{$ep_upto} ) {
-            $upto = lc $ENV{$ep_upto};
-            croak "Unrecognized log level '$upto' in \$ENV{$ep_upto}"
-              if not defined $self->{level_nums}->{$upto};
-        }
-        elsif ( $gp_upto and defined $ENV{$gp_upto} ) {
-            $upto = lc $ENV{$gp_upto};
-            croak "Unrecognized log level '$upto' in \$ENV{$gp_upto}"
-              if not defined $self->{level_nums}->{$upto};
-        }
-        elsif ( defined $self->{default_upto} ) {
-            $upto = $self->{default_upto};
-        }
-        else {
-            return 0;
-        }
+        # If there is no UPTO in env and there's no default, then we can't be
+        # considered.
+        return 0 if not defined $upto and not defined $self->{default_upto};
+
+        # Defaults however are considered where possible.
+        $upto = $self->{default_upto} if not defined $upto;
 
         return $self->{level_nums}->{$level} >= $self->{level_nums}->{$upto};
     };
@@ -234,6 +249,13 @@ or within all packages in a project, without having to resort to heavyweight log
 
   MY_PROJECT_UPTO=debug           # debug the whole project
   MY_PROJECT_PACKAGE_UPTO=trace   # trace level on ::Package
+
+Since C<0.002000>, C<group_env_prefix> can be an C<ArrayRef> ordered by "narrowest" to "broadest" inclusion.
+
+  my $logger = Log::Contextual::WarnLogger::Fancy->new(
+    env_prefix       => 'MY_PROJECT_PACKAGE',     # control this level only
+    group_env_prefix => [ 'MY_PROJECT', 'MY' ],   # shared control for all components
+  );
 
 =head2 Default C<upto> level.
 
